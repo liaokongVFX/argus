@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "argus"
+version = "0.1.0"
+description = ""
+authors = ["LiaoKong <568250549@qq.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+psutil = "^6.0.0"
+pyside6 = "^6.7.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
