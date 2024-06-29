@@ -15,6 +15,8 @@ def update_stats(label):
 
 
 def register(label, main_window):
+    label.setText(f'CPU: 0% Memory: 0%')
+
     timer = QtCore.QTimer(main_window)
     timer.timeout.connect(partial(update_stats, label))
     timer.start(1000)
