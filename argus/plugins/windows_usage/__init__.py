@@ -1,26 +1,26 @@
 import os
 import subprocess
-from functools import partial
 
 import psutil
-from PySide6 import QtCore
+from argus.plugin import PluginBase
 
 
-def update_stats(label):
-    cpu_usage = psutil.cpu_percent()
-    memory_info = psutil.virtual_memory()
-    memory_usage = memory_info.percent
+class WindowsUserPlugin(PluginBase):
+    def set_init_label(self):
+        return 'CPU: 0% Memory: 0%'
 
-    label.setText(f'CPU: {cpu_usage}% Memory: {memory_usage}%')
+    def start(self):
+        cpu_usage = psutil.cpu_percent()
+        memory_info = psutil.virtual_memory()
+        memory_usage = memory_info.percent
 
+        self.label.setText(f'CPU: {cpu_usage}% Memory: {memory_usage}%')
 
-def register(label, main_window):
-    label.setText(f'CPU: 0% Memory: 0%')
+    def double_click_handler(self):
+        if not self.label.is_checked:
+            self.label.set_status()
 
-    timer = QtCore.QTimer(main_window)
-    timer.timeout.connect(partial(update_stats, label))
-    timer.start(1000)
+        self.show_notification('打开任务管理器')
 
-
-def double_click_handler():
-    subprocess.Popen(os.path.join(os.path.dirname(__file__), 'taskmgr.bat'))
+        subprocess.Popen(
+            os.path.join(os.path.dirname(__file__), 'taskmgr.bat'))

@@ -6,9 +6,9 @@ authors = ["LiaoKong <568250549@qq.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
+python = ">=3.9,<3.11"
 psutil = "^6.0.0"
-pyside6 = "^6.7.2"
+pyside2 = "^5.15.2.1"
 
 
 [build-system]
