@@ -9,6 +9,7 @@ readme = "README.md"
 python = ">=3.9,<3.11"
 psutil = "^6.0.0"
 pyside2 = "^5.15.2.1"
+pyside2-fluent-widgets = "^1.5.8"
 
 
 [build-system]
